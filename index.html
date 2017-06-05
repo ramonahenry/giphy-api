@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Giphy API</title>
+</head>
+
+<body>
+<!--container for  giphy buttons -->
+
+<div class="row">
+          <div class="col-xs-12" id="gifBtn">
+           
+            <div id="giphy-buttons">
+              
+            </div>
+   </div>
+
+<div class="row">
+          <div class="col-xs-12" id="gifContainer">
+           
+            <div id="giphyImg">
+              
+            </div>
+   </div>
+
+<div class="test">
+  <img id="testImg">
+</div>
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript">
+
+    // Example queryURL for Giphy API
+    var topics = ["rhoa", "rhob", "basketball-wives"];
+    
+    
+
+    //var giflabel = $(this).attr('data-name');
+
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +topics +"&api_key=dc6zaTOxFJmzC";
+function gifDisplay(){
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).done(function(response) {
+
+      var getGiphy = (response.data);
+      for (var i=0; i < getGiphy.length; i++){
+      //var imgGifs =  $('<div class="gifHolder">')
+                var realImg = $('<img>');
+     realImg.attr("src", getGiphy[i].images.fixed_width_still.url);
+      //GIFimg.attr("data-still", GiphyArray[g].images.fixed_width_still.url);
+      //GIFimg.attr("data-animate", GiphyArray[g].images.fixed_width.url);
+      //GIFimg.attr("data-state", "still");
+      //GIFimg.addClass("GIFimage");
+      //martialGIFdiv.append(GIFimg);
+      console.log(getGiphy[i]);
+
+        $('#gifyImg').prepend(imgGifs);
+
+      }
+
+      
+    });
+  } gifDisplay();
+
+    function renderbuttons(){
+
+    //prevents repeat buttons
+    //$("#giphy-buttons").empty();
+    for (var i = 0; i < topics.length; i++) {
+      var realBtn = $("<button>");
+      realBtn.attr('data-name', topics[i]); //add a data-attribute
+      realBtn.text(topics[i]); //provide initial button text
+      $("#giphy-buttons").append(realBtn); 
+      console.log(topics.length);
+    }
+  }renderbuttons();
+
+    
+    console.log(topics);
+      
+//enderbuttons();
+ //end display gifs
+  
+
+
+
+
+  </script>
+
+</body>
+
+</html>
