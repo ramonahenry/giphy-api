@@ -34,12 +34,10 @@
 
     // Example queryURL for Giphy API
     var topics = ["rhoa", "rhob", "basketball-wives"];
-    
-    
-
+ 
     //var giflabel = $(this).attr('data-name');
 
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +topics +"&api_key=dc6zaTOxFJmzC";
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +topics +"&api_key=dc6zaTOxFJmzC&limit=20";
 function gifDisplay(){
     $.ajax({
       url: queryURL,
@@ -48,20 +46,16 @@ function gifDisplay(){
 
       var getGiphy = (response.data);
       for (var i=0; i < getGiphy.length; i++){
-      //var imgGifs =  $('<div class="gifHolder">')
-                var realImg = $('<img>');
+      
+     var realImg = $('<img>');
      realImg.attr("src", getGiphy[i].images.fixed_width_still.url);
-      //GIFimg.attr("data-still", GiphyArray[g].images.fixed_width_still.url);
-      //GIFimg.attr("data-animate", GiphyArray[g].images.fixed_width.url);
-      //GIFimg.attr("data-state", "still");
-      //GIFimg.addClass("GIFimage");
-      //martialGIFdiv.append(GIFimg);
+      
       console.log(getGiphy[i]);
 
-        $('#gifyImg').prepend(imgGifs);
+        $('#gifyImg').prepend(realImg);
 
-      }
-
+      }  var rating = response.data[0].rating;
+      
       
     });
   } gifDisplay();
@@ -81,12 +75,6 @@ function gifDisplay(){
 
     
     console.log(topics);
-      
-//enderbuttons();
- //end display gifs
-  
-
-
 
 
   </script>
