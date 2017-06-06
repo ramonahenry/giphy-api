@@ -1,0 +1,36 @@
+body{
+	background-color: #ffebcc;
+
+}
+
+hr{
+	line-height: 5px;
+	color: black;
+	border-width: 3px;
+	border-color: black;
+
+	
+}
+
+#instr{
+	
+	font-weight: bold;
+}
+
+#giphyImg{
+	margin: 3px;
+
+
+}
+
+#rating{
+	font-style: italic;
+
+}
+
+.gifTopics{
+
+	margin: 10px;
+	background-color: #008080; 
+	color: white;
+}
